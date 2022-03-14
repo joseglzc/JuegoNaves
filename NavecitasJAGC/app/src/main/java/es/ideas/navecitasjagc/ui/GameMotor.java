@@ -1,12 +1,19 @@
 package es.ideas.navecitasjagc.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import es.ideas.navecitasjagc.MainActivity;
 import es.ideas.navecitasjagc.R;
@@ -16,6 +23,7 @@ public class GameMotor extends AppCompatActivity {
 
     private Motor motor;
     final int tiempoDeJuegoMax = 200;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,9 @@ public class GameMotor extends AppCompatActivity {
         );
 
         setContentView(motor);
+
+
+
     }
 
     @Override
@@ -60,4 +71,5 @@ public class GameMotor extends AppCompatActivity {
         super.onResume();
         motor.resume();
     }
+
 }

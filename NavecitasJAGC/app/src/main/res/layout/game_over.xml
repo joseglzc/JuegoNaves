@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvNombreDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPuntuacionesDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/tvNombreDialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/tvNombreDialog"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvNombreDialog" />
+
+    <ImageButton
+        android:id="@+id/btnReiniciarDialog"
+        android:layout_marginTop="15dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/btnPuntuacionDialog"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreDialog" />
+
+    <ImageButton
+        android:id="@+id/btnPuntuacionDialog"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/puntuaciones"
+        app:layout_constraintBottom_toBottomOf="@+id/btnReiniciarDialog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnReiniciarDialog"
+        app:layout_constraintTop_toTopOf="@+id/btnReiniciarDialog" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,6 +41,8 @@ public class Motor extends SurfaceView implements Runnable {
     Thread juegoHilo = null;
     Context cxt;
     SoundPool soundPool;
+    int idDisparo;
+    int idGameOverSound;
     int anchoScreen, altoScreen;
     boolean isGameOver;
     volatile boolean isColision;
@@ -84,7 +86,9 @@ public class Motor extends SurfaceView implements Runnable {
         } else {
             new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         }
-        idExplosion = soundPool.load(cxt, R.raw.sonido_explosion, 0);
+        idExplosion = soundPool.load(cxt, R.raw.sonido_explosion, 1);
+        idDisparo = soundPool.load(cxt, R.raw.sonido_disparo_laser, 1);
+        idGameOverSound = soundPool.load(cxt, R.raw.sonido_game_over, 1);
     }
 
     /**
@@ -98,6 +102,8 @@ public class Motor extends SurfaceView implements Runnable {
             draw();
             control();
         }
+
+
     }
 
     /**
@@ -136,13 +142,14 @@ public class Motor extends SurfaceView implements Runnable {
             isPlaying = false;
             isGameOver=true;
 
+            soundPool.play(idGameOverSound, 1, 1, 1, 0,1);
+
             //Al finalizar el juego, añadimos un nuevo jugador a la base de datos.
             Jugador j = new Jugador();
             j.setNombre(MainActivity.nombreJ);
             j.setPuntuacion(score);
             DBJugadores db = new DBJugadores(cxt);
             long id =db.nuevoJugador(j);
-
 
         } else {
             if (isColision) {
@@ -164,7 +171,7 @@ public class Motor extends SurfaceView implements Runnable {
                         isColision=true;
                         soundPool.play(idExplosion,1,1,0,0,1);
                         tiempoColision = TIEMPO_MAX_COLISION;
-                        contadorTiempoJuego=tiempoMaxJuego;
+                        contadorTiempoJuego+=150;
                         posXcolision=objetosJuego.get(1).getX();
                         posYcolision=objetosJuego.get(1).getY();
                         numObjetos=objetosJuego.size();
@@ -249,6 +256,7 @@ public class Motor extends SurfaceView implements Runnable {
                             misil.setY(naveJugador.getY() - misil.getAlto());
                             misil.setVelocidad(50);
                             objetosJuego.add(misil);
+                            soundPool.play(idDisparo, 1, 1, 1, 0,1);
                     }
                     break;
             }
