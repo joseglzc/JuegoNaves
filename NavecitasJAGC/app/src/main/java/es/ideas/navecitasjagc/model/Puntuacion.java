@@ -19,16 +19,21 @@ public class Puntuacion extends AppCompatActivity implements View.OnClickListene
     RecyclerView recyclerView;
     static ArrayList<Jugador> jugadores = new ArrayList<>();
     static Adaptador adaptador;
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puntuacion);
+        //Instanciamos los objetos del layer.
         btnSalir = findViewById(R.id.btnSalir);
         recyclerView = findViewById(R.id.RecyclerView);
         btnSalir.setOnClickListener(this);
+        //Instanciamos la base de datos.
         DBJugadores dbJugadores = new DBJugadores(this);
+        //Cada vez que entramos actualizamos la lista, para que esté ordenada.
         jugadores.removeAll(jugadores);
         dbJugadores.consultaAllJugadores(jugadores);
+        //Añadimos le adaptador al RecyclerView
         adaptador = new Adaptador(jugadores,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptador);

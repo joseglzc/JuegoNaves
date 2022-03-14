@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnJugar:
+            case R.id.btnJugar: //Iniciará el juego.
                 if (nombre.getText().toString().equals("")){
                     Toast.makeText(this, "Introudce un nombre!!", Toast.LENGTH_SHORT).show();
                 }else{
@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     finish();
                 }
                 break;
-            case R.id.btnPuntuacion:
+            case R.id.btnPuntuacion: //Iremos al activity con las puntuaciones.
                 Intent intent = new Intent(this, Puntuacion.class);
                 startActivity(intent);
                 break;
-            case R.id.btnSalir:
+            case R.id.btnSalir://Cerrará la app.
                 finish();
                 break;
         }

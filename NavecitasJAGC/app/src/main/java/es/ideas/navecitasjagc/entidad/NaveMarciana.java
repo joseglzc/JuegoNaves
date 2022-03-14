@@ -27,22 +27,20 @@ public class NaveMarciana extends GameObject {
 
     @Override
     public void update() {
-
+        ++esperar;
         if (esperar==retardo){
             Random random = new Random();
-            int posicion = random.nextInt(maxX - getBitmap().getWidth());
-            do {
-                setX(+1);
-            }while (getX()>=posicion);
+            setX( random.nextInt(maxX-getBitmap().getWidth()));
 
             esperar=0;
-        }else esperar+=1;
-        colision.left=getX();
-        colision.top=getY();
-        colision.right=getX()+getBitmap().getWidth();
-        colision.bottom=getY()+getBitmap().getHeight();
+        }else{
+            colision.left=getX();
+            colision.top=getY();
+            colision.right=getX()+getBitmap().getWidth();
+            colision.bottom=getY()+getBitmap().getHeight();}
     }
 
+    //-------------GETTERS AND SETTERS---------------
     public Rect getColision(){return colision;}
     public int getAncho(){return getBitmap().getWidth();}
     public int getAlto(){return getBitmap().getHeight();}

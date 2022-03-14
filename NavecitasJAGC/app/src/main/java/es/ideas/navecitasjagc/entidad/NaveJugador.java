@@ -25,6 +25,7 @@ public class NaveJugador extends GameObject {
     @Override
     public void update() {}
 
+    //-------------GETTERS AND SETTERS---------------
     public int getAncho(){return getBitmap().getWidth();}
     public int getAlto(){return getBitmap().getHeight();}
     public boolean isSeleccionado(){return seleccionado;}
